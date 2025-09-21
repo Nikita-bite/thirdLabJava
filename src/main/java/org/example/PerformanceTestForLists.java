@@ -102,7 +102,7 @@ public class PerformanceTestForLists {
         }
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Тестирование инициализации ArrayList: " + (endTime - startTime));
+        System.out.println("Тестирование инициализации ArrayList: " + (endTime - startTime) + " мс");
         return endTime - startTime;
     }
 
@@ -120,7 +120,7 @@ public class PerformanceTestForLists {
         }
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Тестирование инициализации LinkedList:" + (endTime - startTime));
+        System.out.println("Тестирование инициализации LinkedList: " + (endTime - startTime) + " мс");
         return endTime - startTime;
     }
 
