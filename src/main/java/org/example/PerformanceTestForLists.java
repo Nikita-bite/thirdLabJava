@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Тест производительности ArrayList и LinkedList.
+ *
+ * <p>
+ * Класс предоставляет собой тест-сравнение методов {@code add()}, {@code get()}, {@code remove()} по индексу с начала и с конца, инициализации листов по скорости.
+ *
+ * @author Nikita Filippov
+ * @version 1.0
+ * @since 2025
+ */
+
 public class PerformanceTestForLists {
 
     public int iterations;
@@ -20,6 +31,11 @@ public class PerformanceTestForLists {
         this.iterationsCreationLists = iterationsCreationLists;
     }
 
+    /**
+     * Тест производительности метода {@code add()}.
+     *
+     * @param list список.
+     */
     private long testAdd(List<Integer> list) {
         long startTime = System.currentTimeMillis();
 
@@ -33,6 +49,11 @@ public class PerformanceTestForLists {
         return duration;
     }
 
+    /**
+     * Тест производительности метода {@code get()}.
+     *
+     * @param list список.
+     */
     private long testGet(List<Integer> list) {
         for (int i = 0; i < iterations; i++) {
             list.add(i);
@@ -50,16 +71,17 @@ public class PerformanceTestForLists {
         return duration;
     }
 
+    /**
+     * Тест производительности метода {@code remove(int index)} (удаление в начале списка).
+     *
+     * @param list список.
+     */
     private long testDeleteFirst(List<Integer> list) {
         for (int i = 0; i < iterations; i++) {
             list.add(i);
         }
 
         long startTime = System.currentTimeMillis();
-
-//        for (int i = iterations - 1; i >= 0; i--) {
-//            list.remove(i);
-//        }
 
         for (int i = 0; i < iterations; i++) {
             list.remove(0);
@@ -71,6 +93,11 @@ public class PerformanceTestForLists {
         return duration;
     }
 
+    /**
+     * Тест производительности метода {@code remove(int index)} (удаление в конце списка).
+     *
+     * @param list список.
+     */
     private long testDeleteLast(List<Integer> list) {
         for (int i = 0; i < iterations; i++) {
             list.add(i);
@@ -88,6 +115,11 @@ public class PerformanceTestForLists {
         return duration;
     }
 
+    /**
+     * Тест производительности инициализации ArrayList.
+     *
+     * @param size количество элементов, добавляемых после инициализации.
+     */
     @SuppressWarnings("unchecked")
     private long testArrayListCreation(int size) {
         long startTime = System.currentTimeMillis();
@@ -106,6 +138,11 @@ public class PerformanceTestForLists {
         return endTime - startTime;
     }
 
+    /**
+     * Тест производительности инициализации LinkedList.
+     *
+     * @param size количество элементов, добавляемых после инициализации.
+     */
     @SuppressWarnings("unchecked")
     private long testLinkedListCreation(int size) {
         long startTime = System.currentTimeMillis();
@@ -124,6 +161,9 @@ public class PerformanceTestForLists {
         return endTime - startTime;
     }
 
+    /**
+     * Печать результатов в консоль.
+     */
     private void printResults(long arrayListAdd, long arrayListGet, long arrayListDeleteFirst, long arrayListDeleteLast, long arrayListTime,
                               long linkedListAdd, long linkedListGet, long linkedListDeleteFirst, long linkedListDeleteLast, long linkedListTime) {
 
@@ -180,6 +220,9 @@ public class PerformanceTestForLists {
         }
     }
 
+    /**
+     * Запуск теста.
+     */
     public void PerformanceTest() {
         System.out.println("Сравнение производительности ArrayList и LinkedList");
         System.out.println("Количество итераций: " + iterations);
